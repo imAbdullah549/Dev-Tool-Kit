@@ -1,11 +1,10 @@
 // src/components/Header.tsx
 import React from "react";
-import { AppBar, Toolbar, Typography, IconButton, Button } from "@mui/material";
+import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-import { useThemeContext } from "../ThemeContext";
-import { useTranslation } from "react-i18next";
+import { useThemeContext } from "./ThemeContext";
 
 interface HeaderProps {
   title: string;
@@ -19,11 +18,11 @@ const Header: React.FC<HeaderProps> = ({
   onBackClick,
 }) => {
   const { toggleTheme, isDark } = useThemeContext();
-  const { i18n } = useTranslation();
+  //   const { i18n } = useTranslation();
 
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
-  };
+  //   const changeLanguage = (lang: string) => {
+  //     i18n.changeLanguage(lang);
+  //   };
 
   return (
     <AppBar position="static">
