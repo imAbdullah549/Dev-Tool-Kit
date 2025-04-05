@@ -29,7 +29,7 @@ const errorLineField = StateField.define<DecorationSet>({
     return Decoration.none;
   },
   update(deco, tr) {
-    for (let e of tr.effects) {
+    for (const e of tr.effects) {
       if (e.is(setErrorLine)) {
         const errorLine = e.value;
         if (errorLine !== null) {
@@ -137,9 +137,11 @@ const JSONFormatterPage: React.FC = () => {
       // Update the URL with the encoded JSON.
       const encoded = encodeURIComponent(jsonInput);
       window.history.replaceState(null, "", `?json=${encoded}`);
-    } catch (error: any) {
-      const rawErrorMessage = error.message;
-      console.log("rawErrorMessage", rawErrorMessage);
+    } catch (error: unknown) {
+      let rawErrorMessage = "Unknown error";
+      if (error instanceof Error) {
+        rawErrorMessage = error.message;
+      }
       const details = extractErrorDetails(rawErrorMessage);
       let snippet: string | undefined;
       if (details.line) {
@@ -180,7 +182,7 @@ const JSONFormatterPage: React.FC = () => {
     try {
       await navigator.clipboard.writeText(formattedJson);
       alert("Formatted JSON copied to clipboard!");
-    } catch (err) {
+    } catch {
       alert("Failed to copy to clipboard.");
     }
   };
