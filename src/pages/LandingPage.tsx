@@ -26,6 +26,11 @@ const LandingPage: React.FC = () => {
     navigate("/xml-formatter");
   };
 
+  // Navigate to the XML Formatter tool page
+  const handleRegexCardClick = (): void => {
+    navigate("/regex-tester");
+  };
+
   return (
     <>
       <Header title={t("Developer Toolkit Platform")} />
@@ -73,6 +78,26 @@ const LandingPage: React.FC = () => {
                   "Format and validate your XML data quickly and easily."
                 )}
                 onClick={handleXmlCardClick}
+              />
+            </Grid>
+            {/* Regex Tester card */}
+            <Grid size={{ xs: 12, sm: 5, md: 4 }}>
+              <ToolCard
+                icon={
+                  <CodeIcon
+                    sx={{
+                      color:
+                        theme.palette.mode === "dark"
+                          ? theme.palette.primary.light
+                          : "#007FFF",
+                    }}
+                  />
+                }
+                title={t("Regex Tester")}
+                description={t(
+                  "Format and validate your Regex data quickly and easily."
+                )}
+                onClick={handleRegexCardClick}
               />
             </Grid>
           </Grid>
