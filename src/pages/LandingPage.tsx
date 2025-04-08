@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import DataObjectIcon from "@mui/icons-material/DataObject";
 import CodeIcon from "@mui/icons-material/Code";
 import ToolCard from "../components/ToolCard";
+import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 
 /**
  * LandingPage displays the main page with a header and cards for each tool.
@@ -29,6 +30,9 @@ const LandingPage: React.FC = () => {
   // Navigate to the XML Formatter tool page
   const handleRegexCardClick = (): void => {
     navigate("/regex-tester");
+  };
+  const handleBase64CardClick = (): void => {
+    navigate("/base64-encoder-decoder");
   };
 
   return (
@@ -98,6 +102,25 @@ const LandingPage: React.FC = () => {
                   "Format and validate your Regex data quickly and easily."
                 )}
                 onClick={handleRegexCardClick}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 5, md: 4 }}>
+              <ToolCard
+                icon={
+                  <SwapHorizIcon
+                    sx={{
+                      color:
+                        theme.palette.mode === "dark"
+                          ? theme.palette.primary.light
+                          : "#007FFF",
+                    }}
+                  />
+                }
+                title={t("Base64 Encoder/Decoder")}
+                description={t(
+                  "Encode and decode your data to/from Base64 quickly and easily."
+                )}
+                onClick={handleBase64CardClick}
               />
             </Grid>
           </Grid>
